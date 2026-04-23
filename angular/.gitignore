@@ -1,0 +1,13 @@
+# Angular build output
+dist/
+.angular/
+
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

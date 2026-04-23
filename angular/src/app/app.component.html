@@ -1,0 +1,37 @@
+<div class="app-shell">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a routerLink="/" class="navbar-brand">
+        <span class="navbar-brand-icon">⬡</span>
+        <span class="navbar-brand-name">dasdasdd</span>
+      </a>
+
+      <ul class="navbar-links">
+        <li>
+          <a
+            routerLink="/users"
+            routerLinkActive="active"
+            class="navbar-link"
+          >
+            Users
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <div class="container">
+      <router-outlet />
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© {{ currentYear }} dasdasdd. All rights reserved.</span>
+    </div>
+  </footer>
+</div>

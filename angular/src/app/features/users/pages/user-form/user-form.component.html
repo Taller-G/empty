@@ -1,0 +1,88 @@
+<div class="page-header">
+  <div>
+    <h1 class="page-title">{{ isEditMode() ? 'Edit User' : 'New User' }}</h1>
+    <p class="page-subtitle">
+      {{ isEditMode() ? 'Update the user details below.' : 'Fill in the details to create a new user.' }}
+    </p>
+  </div>
+  <a routerLink="/users" class="btn btn-outline">← Back to Users</a>
+</div>
+
+@if (error()) {
+  <div class="alert alert-danger" role="alert">{{ error() }}</div>
+}
+
+@if (isLoading()) {
+  <div class="loading-state">
+    <span class="spinner"></span>
+    <span>Loading…</span>
+  </div>
+} @else {
+  <div class="card form-card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+      <div class="form-group">
+        <label for="name" class="form-label">Full Name <span class="required">*</span></label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          class="form-control"
+          [class.is-invalid]="nameControl.invalid && nameControl.touched"
+          placeholder="e.g. Alice Smith"
+          autocomplete="name"
+        />
+        @if (nameControl.invalid && nameControl.touched) {
+          <span class="form-error">
+            @if (nameControl.errors?.['required']) {
+              Name is required.
+            } @else if (nameControl.errors?.['minlength']) {
+              Name must be at least 2 characters.
+            } @else if (nameControl.errors?.['maxlength']) {
+              Name must not exceed 100 characters.
+            }
+          </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">Email Address <span class="required">*</span></label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="emailControl.invalid && emailControl.touched"
+          placeholder="e.g. alice@example.com"
+          autocomplete="email"
+        />
+        @if (emailControl.invalid && emailControl.touched) {
+          <span class="form-error">
+            @if (emailControl.errors?.['required']) {
+              Email is required.
+            } @else if (emailControl.errors?.['email']) {
+              Please enter a valid email address.
+            }
+          </span>
+        }
+      </div>
+
+      <div class="form-actions">
+        <a routerLink="/users" class="btn btn-outline">Cancel</a>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid || isSubmitting()"
+        >
+          @if (isSubmitting()) {
+            <span class="spinner spinner-sm"></span>
+            {{ isEditMode() ? 'Saving…' : 'Creating…' }}
+          } @else {
+            {{ isEditMode() ? 'Save Changes' : 'Create User' }}
+          }
+        </button>
+      </div>
+
+    </form>
+  </div>
+}
