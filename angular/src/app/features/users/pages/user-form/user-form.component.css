@@ -1,29 +1,57 @@
+/* Modern Page Header */
 .page-header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   margin-bottom: var(--spacing-xl);
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  position: relative;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 1px;
+}
+
+.page-header-content {
+  flex: 1;
 }
 
 .page-title {
-  font-size: var(--font-size-2xl);
-  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .page-subtitle {
   color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-  line-height: 1.5;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
 }
 
 .form-card {
-  max-width: 560px;
+  max-width: 600px;
   width: 100%;
+  position: relative;
 }
 
 .required {
   color: var(--color-danger);
+  font-weight: var(--font-weight-semibold);
   margin-left: 2px;
 }
 
@@ -31,18 +59,23 @@
   display: flex;
   justify-content: flex-end;
   gap: var(--spacing-md);
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid var(--color-border);
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--color-border-light);
 }
 
 .loading-state {
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-3xl);
   color: var(--color-text-secondary);
   justify-content: center;
+  font-weight: var(--font-weight-medium);
+}
+
+.loading-spinner {
+  color: var(--color-primary);
 }
 
 .spinner-sm {

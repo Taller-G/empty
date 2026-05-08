@@ -3,7 +3,9 @@
   <nav class="navbar">
     <div class="container navbar-inner">
       <a routerLink="/" class="navbar-brand">
-        <span class="navbar-brand-icon">⬡</span>
+        <div class="navbar-brand-icon">
+          <app-icon name="home" [size]="24"></app-icon>
+        </div>
         <span class="navbar-brand-name">dasdasdd</span>
       </a>
 
@@ -16,9 +18,11 @@
         (click)="toggleMobileMenu()"
       >
         <span class="sr-only">Toggle navigation menu</span>
-        <span class="hamburger-line" [class.open]="isMobileMenuOpen"></span>
-        <span class="hamburger-line" [class.open]="isMobileMenuOpen"></span>
-        <span class="hamburger-line" [class.open]="isMobileMenuOpen"></span>
+        <app-icon 
+          [name]="isMobileMenuOpen ? 'close' : 'menu'" 
+          [size]="20"
+          className="mobile-menu-icon"
+        ></app-icon>
       </button>
 
       <!-- Navigation links -->
@@ -35,7 +39,8 @@
               class="navbar-link"
               (click)="closeMobileMenu()"
             >
-              Users
+              <app-icon name="users" [size]="18"></app-icon>
+              <span>Users</span>
             </a>
           </li>
           <li>
@@ -45,17 +50,19 @@
               class="navbar-link"
               (click)="closeMobileMenu()"
             >
-              Acerca de mí
+              <app-icon name="info" [size]="18"></app-icon>
+              <span>About</span>
             </a>
           </li>
-                  <li>
+          <li>
             <a
               routerLink="/weather"
               routerLinkActive="active"
               class="navbar-link"
               (click)="closeMobileMenu()"
             >
-              Weather
+              <app-icon name="weather" [size]="18"></app-icon>
+              <span>Weather</span>
             </a>
           </li>
         </ul>

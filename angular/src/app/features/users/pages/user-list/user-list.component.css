@@ -1,40 +1,81 @@
+/* Modern Page Header */
 .page-header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   margin-bottom: var(--spacing-xl);
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  position: relative;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 1px;
+}
+
+.page-header-content {
+  flex: 1;
 }
 
 .page-title {
-  font-size: var(--font-size-2xl);
-  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .page-subtitle {
   color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
 }
 
+/* Modern Loading & Empty States */
 .loading-state {
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-3xl);
   color: var(--color-text-secondary);
   justify-content: center;
+  font-weight: var(--font-weight-medium);
+}
+
+.loading-spinner {
+  color: var(--color-primary);
 }
 
 .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+  padding: var(--spacing-3xl);
+  text-align: center;
+}
+
+.empty-state-icon {
+  color: var(--color-text-muted);
+  opacity: 0.5;
 }
 
 .empty-state-message {
   color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  max-width: 300px;
 }
 
 /* Desktop table styles */

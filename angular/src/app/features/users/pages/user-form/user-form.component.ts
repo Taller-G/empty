@@ -10,11 +10,12 @@ import {
 import { switchMap, of } from 'rxjs';
 
 import { UserService } from '../../../../core/services/user.service';
+import { IconComponent } from '../../../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, IconComponent],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css',
 })

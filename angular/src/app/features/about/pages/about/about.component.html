@@ -1,27 +1,29 @@
 <div class="page-header">
-  <div>
-    <h1 class="page-title">Acerca de mí</h1>
-    <p class="page-subtitle">Conoce mi historia, habilidades y trayectoria profesional</p>
+  <div class="page-header-content">
+    <h1 class="page-title">About</h1>
+    <p class="page-subtitle">Discover my story, skills, and professional journey</p>
   </div>
 </div>
 
 <!-- Profile card -->
 <div class="card profile-card">
-  <div class="profile-avatar" aria-hidden="true">👤</div>
+  <div class="profile-avatar">
+    <app-icon name="user" [size]="48"></app-icon>
+  </div>
 
   <div class="profile-body">
-    <h2 class="profile-name">Nombre Apellido</h2>
-    <p class="profile-role">Full-Stack Developer</p>
+    <h2 class="profile-name">Full-Stack Developer</h2>
+    <p class="profile-role">Modern Web Applications & Clean Architecture</p>
 
     <div class="profile-contact">
-      <span class="contact-item">
-        <span class="contact-icon" aria-hidden="true">✉</span>
-        <a href="mailto:contact&#64;example.com">contact&#64;example.com</a>
-      </span>
-      <span class="contact-item">
-        <span class="contact-icon" aria-hidden="true">🌐</span>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/usuario</a>
-      </span>
+      <a href="mailto:contact&#64;example.com" class="contact-item">
+        <app-icon name="info" [size]="16"></app-icon>
+        <span>contact&#64;example.com</span>
+      </a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-item">
+        <app-icon name="home" [size]="16"></app-icon>
+        <span>github.com/usuario</span>
+      </a>
     </div>
   </div>
 </div>

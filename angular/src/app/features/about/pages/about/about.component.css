@@ -1,18 +1,42 @@
-/* Page header */
+/* Modern Page Header */
 .page-header { 
-  margin-bottom: var(--spacing-xl); 
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  position: relative;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 1px;
+}
+
+.page-header-content {
+  max-width: none;
 }
 
 .page-title { 
-  font-size: var(--font-size-2xl); 
-  margin-bottom: var(--spacing-xs); 
-  line-height: 1.2;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--color-text), var(--color-primary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .page-subtitle { 
   color: var(--color-text-secondary); 
-  font-size: var(--font-size-sm); 
-  line-height: 1.5;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
 }
 
 /* Profile card */
@@ -27,12 +51,22 @@
   flex-shrink: 0;
   width: 96px;
   height: 96px;
-  background-color: var(--color-primary-light);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
+  color: #ffffff;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-avatar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
 }
 
 .profile-body { 
@@ -65,14 +99,26 @@
 .contact-item { 
   display: flex; 
   align-items: center; 
-  gap: var(--spacing-xs); 
-  font-size: var(--font-size-sm); 
+  gap: var(--spacing-sm); 
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary); 
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-fast);
   min-width: 0;
+  border: 1px solid var(--color-border-light);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
 }
 
-.contact-item a {
-  word-break: break-all;
+.contact-item:hover {
+  color: var(--color-primary);
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.2);
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
 /* Sections */

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { IconComponent } from '../../../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [],
+  imports: [IconComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
 })

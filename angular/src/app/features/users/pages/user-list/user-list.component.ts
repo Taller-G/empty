@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 
 import { UserService } from '../../../../core/services/user.service';
 import type { User } from '../../../../core/models/user.model';
+import { IconComponent } from '../../../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, IconComponent],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css',
 })
