@@ -17,6 +17,11 @@ export const routes: Routes = [
       import('./features/about/about.routes').then((m) => m.aboutRoutes),
   },
   {
+    path: 'weather',
+    loadChildren: () =>
+      import('./features/weather/weather.routes').then((m) => m.weatherRoutes),
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./shared/components/not-found/not-found.component').then(

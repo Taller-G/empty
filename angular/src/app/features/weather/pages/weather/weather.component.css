@@ -1,0 +1,10 @@
+.weather-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.weather-container h2 {
+  margin-bottom: 15px;
+}
