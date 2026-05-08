@@ -10,7 +10,6 @@
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
 }
-
 .profile-avatar {
   flex-shrink: 0;
   width: 96px;
@@ -22,7 +21,6 @@
   justify-content: center;
   font-size: 2.5rem;
 }
-
 .profile-body { display: flex; flex-direction: column; gap: var(--spacing-xs); }
 .profile-name { font-size: var(--font-size-xl); }
 .profile-role { color: var(--color-primary); font-weight: 500; }
@@ -32,21 +30,12 @@
 /* Sections */
 .section { margin-bottom: var(--spacing-xl); }
 .section-title { font-size: var(--font-size-xl); margin-bottom: var(--spacing-md); }
-
-/* Biography */
 .bio-paragraph { line-height: 1.8; margin-bottom: var(--spacing-md); }
 .bio-paragraph:last-child { margin-bottom: 0; }
 
 /* Skills */
 .skills-list { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); list-style: none; padding: 0; margin: 0; }
-.skill-badge {
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-dark);
-  padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: 999px;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-}
+.skill-badge { background-color: var(--color-primary-light); color: var(--color-primary-dark); padding: var(--spacing-xs) var(--spacing-md); border-radius: 999px; font-size: var(--font-size-sm); font-weight: 500; }
 
 /* Experience */
 .experience-list { display: flex; flex-direction: column; gap: var(--spacing-md); }
@@ -54,20 +43,11 @@
 .experience-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--spacing-md); }
 .experience-role { font-size: var(--font-size-lg); }
 .experience-company { color: var(--color-primary); font-weight: 500; font-size: var(--font-size-sm); margin-top: 2px; }
-.experience-period {
-  flex-shrink: 0;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  background-color: var(--color-background);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  border: 1px solid var(--color-border);
-  white-space: nowrap;
-}
+.experience-period { flex-shrink: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); background-color: var(--color-background); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--border-radius-sm); border: 1px solid var(--color-border); white-space: nowrap; }
 .experience-description { color: var(--color-text-secondary); line-height: 1.7; }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .profile-card { flex-direction: column; align-items: flex-start; gap: var(--spacing-md); }
+  .profile-card { flex-direction: column; align-items: flex-start; }
   .experience-header { flex-direction: column; }
 }
