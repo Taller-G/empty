@@ -1,0 +1,82 @@
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Acerca de mí</h1>
+    <p class="page-subtitle">Conoce mi historia, habilidades y trayectoria profesional</p>
+  </div>
+</div>
+
+<!-- Profile card -->
+<div class="card profile-card">
+  <div class="profile-avatar" aria-hidden="true">👤</div>
+
+  <div class="profile-body">
+    <h2 class="profile-name">Nombre Apellido</h2>
+    <p class="profile-role">Full-Stack Developer</p>
+
+    <div class="profile-contact">
+      <span class="contact-item">
+        <span class="contact-icon" aria-hidden="true">✉</span>
+        <a href="mailto:contact&#64;example.com">contact&#64;example.com</a>
+      </span>
+      <span class="contact-item">
+        <span class="contact-icon" aria-hidden="true">🌐</span>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/usuario</a>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Biography -->
+<section class="section" aria-labelledby="bio-heading">
+  <h2 id="bio-heading" class="section-title">Biografía</h2>
+  <div class="card">
+    <p class="bio-paragraph">
+      Soy un desarrollador Full-Stack apasionado por construir aplicaciones web robustas y
+      mantenibles. Me especializo en arquitecturas limpias, priorizando la separación de
+      responsabilidades y la calidad del código por encima de la velocidad de entrega apresurada.
+    </p>
+    <p class="bio-paragraph">
+      A lo largo de mi trayectoria he trabajado en proyectos que van desde startups hasta
+      productos empresariales, colaborando con equipos multidisciplinarios y adaptándome a
+      diferentes contextos tecnológicos. Disfruto resolver problemas complejos de dominio y
+      convertirlos en soluciones simples, elegantes y bien testeadas.
+    </p>
+    <p class="bio-paragraph">
+      Fuera del código me interesa la divulgación tecnológica, el open source y el aprendizaje
+      continuo. Creo firmemente que compartir conocimiento es la mejor forma de crecer como
+      profesional y como comunidad.
+    </p>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="section" aria-labelledby="skills-heading">
+  <h2 id="skills-heading" class="section-title">Habilidades</h2>
+  <div class="card">
+    <ul class="skills-list" role="list">
+      @for (skill of skills; track skill) {
+        <li class="skill-badge">{{ skill }}</li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="section" aria-labelledby="experience-heading">
+  <h2 id="experience-heading" class="section-title">Experiencia</h2>
+
+  <div class="experience-list">
+    @for (exp of experiences; track exp.role) {
+      <div class="card experience-card">
+        <div class="experience-header">
+          <div>
+            <h3 class="experience-role">{{ exp.role }}</h3>
+            <p class="experience-company">{{ exp.company }}</p>
+          </div>
+          <span class="experience-period">{{ exp.period }}</span>
+        </div>
+        <p class="experience-description">{{ exp.description }}</p>
+      </div>
+    }
+  </div>
+</section>

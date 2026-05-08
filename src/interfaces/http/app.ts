@@ -15,6 +15,7 @@ import { createRequestLogger } from './middleware/requestLogger';
 import { errorHandler } from './middleware/errorHandler';
 import { userRouter } from './routes/userRoutes';
 import { healthRouter } from './routes/healthRoutes';
+import { technologyRouter } from './routes/technologyRoutes';
 
 export function createApp(): Express {
   const app = express();
@@ -44,6 +45,7 @@ export function createApp(): Express {
 
   app.use(`${prefix}/health`, healthRouter);
   app.use(`${prefix}/users`, userRouter);
+  app.use(`${prefix}/technologies`, technologyRouter);
 
   // ─── 404 catch-all ───────────────────────────────────────────────────────
   app.use((_req: Request, res: Response): void => {

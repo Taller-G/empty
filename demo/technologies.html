@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Technologies - Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .summary {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-item {
+            text-align: center;
+        }
+        
+        .summary-item .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .summary-item .label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .technologies {
+            padding: 40px;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .tech-card {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .tech-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .tech-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .proficiency {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .proficiency.expert {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .proficiency.advanced {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .proficiency.intermediate {
+            background: #3498db;
+            color: white;
+        }
+        
+        .proficiency.beginner {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .tech-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #e74c3c;
+            background: #fdf2f2;
+            border-radius: 8px;
+            margin: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .summary {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>My Technologies</h1>
+            <p>A comprehensive overview of my technical skills and expertise</p>
+        </div>
+        
+        <div id="summary" class="summary" style="display: none;">
+            <div class="summary-item">
+                <div class="number" id="total-count">0</div>
+                <div class="label">Total Technologies</div>
+            </div>
+            <div class="summary-item">
+                <div class="number" id="category-count">0</div>
+                <div class="label">Categories</div>
+            </div>
+            <div class="summary-item">
+                <div class="number" id="advanced-count">0</div>
+                <div class="label">Advanced+ Skills</div>
+            </div>
+        </div>
+        
+        <div id="loading" class="loading">
+            <h3>Loading technologies...</h3>
+            <p>Fetching data from the API</p>
+        </div>
+        
+        <div id="error" class="error" style="display: none;">
+            <h3>Unable to load technologies</h3>
+            <p id="error-message"></p>
+        </div>
+        
+        <div id="technologies" class="technologies" style="display: none;">
+            <!-- Technologies will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        // API endpoint - adjust this URL based on your server configuration
+        const API_URL = '/api/v1/technologies';
+        
+        async function loadTechnologies() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                displayTechnologies(data.data);
+                
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+        
+        function displayTechnologies(data) {
+            const { technologies, summary } = data;
+            
+            // Update summary
+            document.getElementById('total-count').textContent = summary.total;
+            document.getElementById('category-count').textContent = summary.categories;
+            document.getElementById('advanced-count').textContent = 
+                summary.byProficiency.Expert + summary.byProficiency.Advanced;
+            
+            // Display technologies
+            const technologiesContainer = document.getElementById('technologies');
+            technologiesContainer.innerHTML = '';
+            
+            Object.entries(technologies).forEach(([category, techs]) => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.className = 'category-title';
+                categoryTitle.textContent = category;
+                
+                const techGrid = document.createElement('div');
+                techGrid.className = 'tech-grid';
+                
+                techs.forEach(tech => {
+                    const techCard = document.createElement('div');
+                    techCard.className = 'tech-card';
+                    
+                    techCard.innerHTML = `
+                        <div class="tech-header">
+                            <div class="tech-name">${tech.name}</div>
+                            <div class="proficiency ${tech.proficiency.toLowerCase()}">${tech.proficiency}</div>
+                        </div>
+                        <div class="tech-description">${tech.description}</div>
+                    `;
+                    
+                    techGrid.appendChild(techCard);
+                });
+                
+                categoryDiv.appendChild(categoryTitle);
+                categoryDiv.appendChild(techGrid);
+                technologiesContainer.appendChild(categoryDiv);
+            });
+            
+            // Show content and hide loading
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('summary').style.display = 'flex';
+            document.getElementById('technologies').style.display = 'block';
+        }
+        
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error-message').textContent = message;
+        }
+        
+        // Load technologies when page loads
+        window.addEventListener('DOMContentLoaded', loadTechnologies);
+    </script>
+</body>
+</html>
