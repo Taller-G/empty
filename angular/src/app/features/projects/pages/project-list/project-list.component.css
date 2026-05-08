@@ -1,0 +1,293 @@
+/* Page Header with Counter */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-xl);
+  gap: var(--spacing-lg);
+}
+
+.page-title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-xs);
+}
+
+.page-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
+/* Project Counter */
+.project-counter {
+  flex-shrink: 0;
+}
+
+.counter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  min-width: 120px;
+}
+
+.counter-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.counter-label {
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+  margin-top: var(--spacing-xs);
+}
+
+/* Statistics Section */
+.stats-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card.active {
+  border-left-color: var(--color-success);
+}
+
+.stat-card.completed {
+  border-left-color: var(--color-primary);
+}
+
+.stat-card.paused {
+  border-left-color: var(--color-warning);
+}
+
+.stat-number {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.stat-card.active .stat-number {
+  color: var(--color-success);
+}
+
+.stat-card.completed .stat-number {
+  color: var(--color-primary);
+}
+
+.stat-card.paused .stat-number {
+  color: var(--color-warning);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Project Cards */
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+.project-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.project-description {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Technologies Section */
+.project-technologies {
+  margin-bottom: var(--spacing-md);
+}
+
+.tech-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.tech-tag {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-sm);
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+}
+
+/* Project Meta Information */
+.project-meta {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-md);
+}
+
+.project-dates {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.date-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.date-value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+/* Custom badges for project status */
+.badge-info {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.badge-warning {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+/* Loading and Empty States */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  gap: var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+}
+
+.empty-state-message {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-state-subtitle {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+
+  .counter-card {
+    align-self: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .date-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-tags {
+    flex-direction: column;
+  }
+
+  .counter-number {
+    font-size: 2rem;
+  }
+}
