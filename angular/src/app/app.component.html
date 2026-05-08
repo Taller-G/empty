@@ -7,26 +7,54 @@
         <span class="navbar-brand-name">dasdasdd</span>
       </a>
 
-      <ul class="navbar-links">
-        <li>
-          <a
-            routerLink="/users"
-            routerLinkActive="active"
-            class="navbar-link"
-          >
-            Users
-          </a>
-        </li>
-        <li>
-          <a
-            routerLink="/about"
-            routerLinkActive="active"
-            class="navbar-link"
-          >
-            Acerca de mí
-          </a>
-        </li>
-      </ul>
+      <!-- Mobile menu button -->
+      <button 
+        class="mobile-menu-btn" 
+        type="button"
+        [attr.aria-expanded]="isMobileMenuOpen"
+        aria-controls="navbar-menu"
+        (click)="toggleMobileMenu()"
+      >
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="hamburger-line" [class.open]="isMobileMenuOpen"></span>
+        <span class="hamburger-line" [class.open]="isMobileMenuOpen"></span>
+        <span class="hamburger-line" [class.open]="isMobileMenuOpen"></span>
+      </button>
+
+      <!-- Navigation links -->
+      <div 
+        id="navbar-menu"
+        class="navbar-menu" 
+        [class.open]="isMobileMenuOpen"
+      >
+        <ul class="navbar-links">
+          <li>
+            <a
+              routerLink="/users"
+              routerLinkActive="active"
+              class="navbar-link"
+              (click)="closeMobileMenu()"
+            >
+              Users
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/about"
+              routerLinkActive="active"
+              class="navbar-link"
+              (click)="closeMobileMenu()"
+            >
+              Acerca de mí
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobile menu overlay -->
+      @if (isMobileMenuOpen) {
+        <div class="mobile-menu-overlay" (click)="closeMobileMenu()"></div>
+      }
     </div>
   </nav>
 

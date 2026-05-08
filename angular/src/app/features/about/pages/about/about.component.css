@@ -1,7 +1,19 @@
 /* Page header */
-.page-header { margin-bottom: var(--spacing-xl); }
-.page-title { font-size: var(--font-size-2xl); margin-bottom: var(--spacing-xs); }
-.page-subtitle { color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+.page-header { 
+  margin-bottom: var(--spacing-xl); 
+}
+
+.page-title { 
+  font-size: var(--font-size-2xl); 
+  margin-bottom: var(--spacing-xs); 
+  line-height: 1.2;
+}
+
+.page-subtitle { 
+  color: var(--color-text-secondary); 
+  font-size: var(--font-size-sm); 
+  line-height: 1.5;
+}
 
 /* Profile card */
 .profile-card {
@@ -10,6 +22,7 @@
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
 }
+
 .profile-avatar {
   flex-shrink: 0;
   width: 96px;
@@ -21,33 +34,196 @@
   justify-content: center;
   font-size: 2.5rem;
 }
-.profile-body { display: flex; flex-direction: column; gap: var(--spacing-xs); }
-.profile-name { font-size: var(--font-size-xl); }
-.profile-role { color: var(--color-primary); font-weight: 500; }
-.profile-contact { display: flex; flex-wrap: wrap; gap: var(--spacing-md); margin-top: var(--spacing-xs); }
-.contact-item { display: flex; align-items: center; gap: var(--spacing-xs); font-size: var(--font-size-sm); color: var(--color-text-secondary); }
+
+.profile-body { 
+  display: flex; 
+  flex-direction: column; 
+  gap: var(--spacing-xs); 
+  min-width: 0;
+  flex: 1;
+}
+
+.profile-name { 
+  font-size: var(--font-size-xl); 
+  font-weight: 600;
+  margin: 0;
+}
+
+.profile-role { 
+  color: var(--color-primary); 
+  font-weight: 500; 
+  margin: 0;
+}
+
+.profile-contact { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: var(--spacing-md); 
+  margin-top: var(--spacing-xs); 
+}
+
+.contact-item { 
+  display: flex; 
+  align-items: center; 
+  gap: var(--spacing-xs); 
+  font-size: var(--font-size-sm); 
+  color: var(--color-text-secondary); 
+  min-width: 0;
+}
+
+.contact-item a {
+  word-break: break-all;
+}
 
 /* Sections */
-.section { margin-bottom: var(--spacing-xl); }
-.section-title { font-size: var(--font-size-xl); margin-bottom: var(--spacing-md); }
-.bio-paragraph { line-height: 1.8; margin-bottom: var(--spacing-md); }
-.bio-paragraph:last-child { margin-bottom: 0; }
+.section { 
+  margin-bottom: var(--spacing-xl); 
+}
+
+.section-title { 
+  font-size: var(--font-size-xl); 
+  margin-bottom: var(--spacing-md); 
+  font-weight: 600;
+}
+
+.bio-paragraph { 
+  line-height: 1.8; 
+  margin-bottom: var(--spacing-md); 
+}
+
+.bio-paragraph:last-child { 
+  margin-bottom: 0; 
+}
 
 /* Skills */
-.skills-list { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); list-style: none; padding: 0; margin: 0; }
-.skill-badge { background-color: var(--color-primary-light); color: var(--color-primary-dark); padding: var(--spacing-xs) var(--spacing-md); border-radius: 999px; font-size: var(--font-size-sm); font-weight: 500; }
+.skills-list { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: var(--spacing-sm); 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.skill-badge { 
+  background-color: var(--color-primary-light); 
+  color: var(--color-primary-dark); 
+  padding: var(--spacing-xs) var(--spacing-md); 
+  border-radius: 999px; 
+  font-size: var(--font-size-sm); 
+  font-weight: 500; 
+}
 
 /* Experience */
-.experience-list { display: flex; flex-direction: column; gap: var(--spacing-md); }
-.experience-card { display: flex; flex-direction: column; gap: var(--spacing-sm); }
-.experience-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--spacing-md); }
-.experience-role { font-size: var(--font-size-lg); }
-.experience-company { color: var(--color-primary); font-weight: 500; font-size: var(--font-size-sm); margin-top: 2px; }
-.experience-period { flex-shrink: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); background-color: var(--color-background); padding: var(--spacing-xs) var(--spacing-sm); border-radius: var(--border-radius-sm); border: 1px solid var(--color-border); white-space: nowrap; }
-.experience-description { color: var(--color-text-secondary); line-height: 1.7; }
+.experience-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: var(--spacing-lg); 
+}
 
-/* Responsive */
-@media (max-width: 600px) {
-  .profile-card { flex-direction: column; align-items: flex-start; }
-  .experience-header { flex-direction: column; }
+.experience-card { 
+  display: flex; 
+  flex-direction: column; 
+  gap: var(--spacing-sm); 
+}
+
+.experience-header { 
+  display: flex; 
+  align-items: flex-start; 
+  justify-content: space-between; 
+  gap: var(--spacing-md); 
+}
+
+.experience-role { 
+  font-size: var(--font-size-lg); 
+  font-weight: 600;
+  margin: 0;
+}
+
+.experience-company { 
+  color: var(--color-primary); 
+  font-weight: 500; 
+  font-size: var(--font-size-sm); 
+  margin-top: 2px; 
+  margin-bottom: 0;
+}
+
+.experience-period { 
+  flex-shrink: 0; 
+  font-size: var(--font-size-sm); 
+  color: var(--color-text-secondary); 
+  background-color: var(--color-background); 
+  padding: var(--spacing-xs) var(--spacing-sm); 
+  border-radius: var(--border-radius-sm); 
+  border: 1px solid var(--color-border); 
+  white-space: nowrap; 
+  align-self: flex-start;
+}
+
+.experience-description { 
+  color: var(--color-text-secondary); 
+  line-height: 1.7; 
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .profile-card { 
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-lg);
+  }
+
+  .profile-body {
+    align-items: center;
+  }
+
+  .profile-contact {
+    justify-content: center;
+  }
+
+  .experience-header { 
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .experience-period {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+
+  .profile-name {
+    font-size: var(--font-size-lg);
+  }
+
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xs);
+  }
+
+  .experience-list {
+    gap: var(--spacing-md);
+  }
+
+  .skills-list {
+    justify-content: center;
+  }
 }

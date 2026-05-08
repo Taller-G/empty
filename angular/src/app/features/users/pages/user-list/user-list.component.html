@@ -35,7 +35,8 @@
       <a routerLink="/users/new" class="btn btn-primary">Create your first user</a>
     </div>
   } @else {
-    <div class="table-wrapper">
+    <!-- Desktop table view -->
+    <div class="table-wrapper desktop-table">
       <table>
         <thead>
           <tr>
@@ -61,6 +62,7 @@
                 <a
                   [routerLink]="['/users', user.id, 'edit']"
                   class="btn btn-outline btn-sm"
+                  [attr.aria-label]="'Edit ' + user.name"
                 >
                   Edit
                 </a>
@@ -68,6 +70,7 @@
                   type="button"
                   class="btn btn-danger btn-sm"
                   (click)="deleteUser(user.id)"
+                  [attr.aria-label]="'Delete ' + user.name"
                 >
                   Delete
                 </button>
@@ -76,6 +79,43 @@
           }
         </tbody>
       </table>
+    </div>
+
+    <!-- Mobile card view -->
+    <div class="mobile-cards">
+      @for (user of users(); track trackById($index, user)) {
+        <div class="mobile-user-card">
+          <div class="mobile-user-header">
+            <div class="mobile-user-info">
+              <h3 class="mobile-user-name">{{ user.name }}</h3>
+              <p class="mobile-user-email">{{ user.email }}</p>
+            </div>
+            <span [class]="'badge ' + (user.isActive ? 'badge-success' : 'badge-danger')">
+              {{ user.isActive ? 'Active' : 'Inactive' }}
+            </span>
+          </div>
+          <div class="mobile-user-meta">
+            <span class="mobile-user-date">{{ user.createdAt | date: 'mediumDate' }}</span>
+          </div>
+          <div class="mobile-user-actions">
+            <a
+              [routerLink]="['/users', user.id, 'edit']"
+              class="btn btn-outline btn-sm"
+              [attr.aria-label]="'Edit ' + user.name"
+            >
+              Edit
+            </a>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              (click)="deleteUser(user.id)"
+              [attr.aria-label]="'Delete ' + user.name"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      }
     </div>
   }
 </div>
