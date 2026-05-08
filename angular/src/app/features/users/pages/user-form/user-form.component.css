@@ -1,9 +1,11 @@
+/* ── Page Header ────────────────────────────────────────────────────────────── */
 .page-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--spacing-xl);
   gap: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
 .page-title {
@@ -16,8 +18,11 @@
   font-size: var(--font-size-sm);
 }
 
+/* ── Form Card ──────────────────────────────────────────────────────────────── */
 .form-card {
   max-width: 560px;
+  /* Ensure it still fills the viewport on small screens */
+  width: 100%;
 }
 
 .required {
@@ -25,6 +30,7 @@
   margin-left: 2px;
 }
 
+/* ── Form Actions ───────────────────────────────────────────────────────────── */
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -32,8 +38,10 @@
   margin-top: var(--spacing-xl);
   padding-top: var(--spacing-lg);
   border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
 }
 
+/* ── Loading State ──────────────────────────────────────────────────────────── */
 .loading-state {
   display: flex;
   align-items: center;
@@ -48,12 +56,21 @@
   border-width: 2px;
 }
 
-@media (max-width: 600px) {
+/* ── Responsive: Tablet (≤ 768px) ──────────────────────────────────────────── */
+@media (max-width: 768px) {
   .page-header {
     flex-direction: column;
     align-items: flex-start;
   }
 
+  /* "Back" button takes full width alongside the title block */
+  .page-header .btn {
+    align-self: flex-start;
+  }
+}
+
+/* ── Responsive: Mobile (≤ 480px) ──────────────────────────────────────────── */
+@media (max-width: 480px) {
   .form-actions {
     flex-direction: column-reverse;
   }

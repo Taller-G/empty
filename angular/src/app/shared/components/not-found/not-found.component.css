@@ -6,10 +6,11 @@
   text-align: center;
   padding: var(--spacing-2xl) var(--spacing-md);
   gap: var(--spacing-md);
+  min-height: 40vh;
 }
 
 .not-found-code {
-  font-size: 6rem;
+  font-size: clamp(3.5rem, 15vw, 6rem);
   font-weight: 700;
   color: var(--color-primary-light);
   line-height: 1;
@@ -23,4 +24,5 @@
 .not-found-message {
   color: var(--color-text-secondary);
   max-width: 360px;
+  font-size: var(--font-size-base);
 }

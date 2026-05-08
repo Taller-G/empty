@@ -1,9 +1,11 @@
+/* ── Page Header ────────────────────────────────────────────────────────────── */
 .page-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--spacing-xl);
   gap: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
 .page-title {
@@ -16,6 +18,7 @@
   font-size: var(--font-size-sm);
 }
 
+/* ── States ─────────────────────────────────────────────────────────────────── */
 .loading-state {
   display: flex;
   align-items: center;
@@ -30,13 +33,15 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-2xl) var(--spacing-md);
+  text-align: center;
 }
 
 .empty-state-message {
   color: var(--color-text-secondary);
 }
 
+/* ── Table ──────────────────────────────────────────────────────────────────── */
 .actions-col {
   width: 160px;
   text-align: right;
@@ -54,14 +59,82 @@
 }
 
 .retry-btn {
-  margin-left: var(--spacing-sm);
-  padding: 2px 10px;
+  padding: 4px 10px;
   font-size: var(--font-size-sm);
+  flex-shrink: 0;
 }
 
-@media (max-width: 600px) {
+/* ── Responsive: Tablet (≤ 768px) ──────────────────────────────────────────── */
+@media (max-width: 768px) {
   .page-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .page-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Responsive: Mobile — card-stack table (≤ 560px) ───────────────────────── */
+@media (max-width: 560px) {
+  /* Hide the standard <thead> */
+  .table-wrapper thead {
+    display: none;
+  }
+
+  /* Remove the min-width constraint so cells can go full-width */
+  .table-wrapper table {
+    min-width: 0;
+  }
+
+  /* Each row becomes a card */
+  .table-wrapper tbody tr {
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-md);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-sm) 0;
+  }
+
+  /* Remove the per-row hover background (card already gives context) */
+  .table-wrapper tbody tr:hover td {
+    background-color: transparent;
+  }
+
+  /* Each cell becomes a labelled row inside the card */
+  .table-wrapper tbody td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size-sm);
+    text-align: right;
+  }
+
+  .table-wrapper tbody td:last-child {
+    border-bottom: none;
+  }
+
+  /* Inject column labels via data-label attributes */
+  .table-wrapper tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    text-align: left;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Actions cell: keep buttons on the right, no label needed */
+  .actions-cell {
+    justify-content: flex-end;
+    flex-wrap: wrap;
   }
 }

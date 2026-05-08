@@ -16,7 +16,7 @@
 
 @if (error()) {
   <div class="alert alert-danger" role="alert">
-    {{ error() }}
+    <span>{{ error() }}</span>
     <button type="button" class="btn btn-outline retry-btn" (click)="loadUsers()">
       Retry
     </button>
@@ -49,14 +49,14 @@
         <tbody>
           @for (user of users(); track trackById($index, user)) {
             <tr>
-              <td>{{ user.name }}</td>
-              <td>{{ user.email }}</td>
-              <td>
+              <td data-label="Name">{{ user.name }}</td>
+              <td data-label="Email">{{ user.email }}</td>
+              <td data-label="Status">
                 <span [class]="'badge ' + (user.isActive ? 'badge-success' : 'badge-danger')">
                   {{ user.isActive ? 'Active' : 'Inactive' }}
                 </span>
               </td>
-              <td>{{ user.createdAt | date: 'mediumDate' }}</td>
+              <td data-label="Created">{{ user.createdAt | date: 'mediumDate' }}</td>
               <td class="actions-cell">
                 <a
                   [routerLink]="['/users', user.id, 'edit']"
