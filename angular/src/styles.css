@@ -2,22 +2,34 @@
 
 /* CSS Custom Properties (Design Tokens) */
 :root {
-  /* Modern Color Palette - Futuristic Theme */
-  --color-primary: #6366f1;
-  --color-primary-dark: #4f46e5;
-  --color-primary-light: #a5b4fc;
-  --color-accent: #06b6d4;
-  --color-accent-dark: #0891b2;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
-  --color-text: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-text-muted: #94a3b8;
-  --color-background: #f8fafc;
-  --color-surface: #ffffff;
-  --color-border: #e2e8f0;
-  --color-border-light: #f1f5f9;
+  /* Modern Color Palette - Futuristic Theme (Black, Green, Blue) */
+  --color-primary: #00d9ff;        /* Cyan Blue */
+  --color-primary-dark: #0099cc;   /* Darker Blue */
+  --color-primary-light: #66e5ff;  /* Light Blue */
+  --color-accent: #00ff88;         /* Neon Green */
+  --color-accent-dark: #00cc66;    /* Darker Green */
+  --color-success: #00ff88;        /* Neon Green */
+  --color-warning: #ffaa00;        /* Orange for warnings */
+  --color-danger: #ff3366;         /* Red for errors */
+  --color-text: #ffffff;           /* White text */
+  --color-text-secondary: #cccccc; /* Light gray text */
+  --color-text-muted: #888888;     /* Muted gray text */
+  --color-background: #0a0a0a;     /* Deep Black */
+  --color-surface: #1a1a1a;        /* Dark Gray */
+  --color-surface-elevated: #2a2a2a; /* Elevated surface */
+  --color-border: #333333;         /* Dark border */
+  --color-border-light: #444444;   /* Lighter border */
+  
+  /* Futuristic Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+  --gradient-cyber: linear-gradient(135deg, #00d9ff 0%, #00ff88 50%, #0099cc 100%);
+  --gradient-surface: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-elevated) 100%);
+  
+  /* Neon Glows */
+  --glow-primary: 0 0 20px rgba(0, 217, 255, 0.3);
+  --glow-accent: 0 0 20px rgba(0, 255, 136, 0.3);
+  --glow-hover: 0 0 30px rgba(0, 217, 255, 0.5);
 
   /* Spacing Scale */
   --spacing-xs: 4px;
@@ -98,12 +110,16 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--color-text);
-  background-color: var(--color-background);
+  background: var(--color-background);
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
   line-height: var(--line-height-normal);
   letter-spacing: var(--letter-spacing-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  min-height: 100vh;
 }
 
 /* Modern Typography System */
@@ -186,15 +202,16 @@ a:hover {
   padding: 0 var(--spacing-md);
 }
 
-/* Modern Card System */
+/* Modern Card System - Futuristic */
 .card {
-  background: var(--color-surface);
+  background: var(--gradient-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), var(--glow-primary);
   padding: var(--spacing-xl);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .card::before {
@@ -203,9 +220,24 @@ a:hover {
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-primary-light), transparent);
-  opacity: 0.6;
+  height: 2px;
+  background: var(--gradient-cyber);
+  opacity: 0.8;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+  transition: left 0.8s ease-in-out;
+}
+
+.card:hover::after {
+  left: 100%;
 }
 
 .card-header {

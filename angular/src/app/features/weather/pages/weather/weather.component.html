@@ -1,6 +1,130 @@
 <div class="weather-container">
-  <h2>Current Weather</h2>
-  <p>Temperature: {{ temperature }}°C</p>
-  <p>Description: {{ description }}</p>
-  <p>Humidity: {{ humidity }}%</p>
+  <!-- Header Section -->
+  <div class="weather-header">
+    <div class="weather-title-section">
+      <h1 class="weather-title">
+        <span class="weather-icon">🌤️</span>
+        Weather Station
+      </h1>
+      <div class="weather-subtitle">Real-time atmospheric data</div>
+    </div>
+    <div class="weather-status-indicator">
+      <div class="status-dot"></div>
+      <span class="status-text">Online</span>
+    </div>
+  </div>
+
+  <!-- Main Weather Display -->
+  <div class="weather-main-display">
+    <div class="temperature-section">
+      <div class="temperature-value">{{ temperature }}</div>
+      <div class="temperature-unit">°C</div>
+    </div>
+    
+    <div class="weather-details">
+      <div class="weather-condition">
+        <div class="condition-icon">☀️</div>
+        <div class="condition-text">{{ description }}</div>
+      </div>
+      
+      <div class="weather-metrics">
+        <div class="metric-card humidity">
+          <div class="metric-icon">💧</div>
+          <div class="metric-content">
+            <div class="metric-value">{{ humidity }}%</div>
+            <div class="metric-label">Humidity</div>
+          </div>
+          <div class="metric-progress">
+            <div class="progress-bar" [style.width.%]="humidity"></div>
+          </div>
+        </div>
+        
+        <div class="metric-card pressure">
+          <div class="metric-icon">🌡️</div>
+          <div class="metric-content">
+            <div class="metric-value">1013</div>
+            <div class="metric-label">Pressure (hPa)</div>
+          </div>
+          <div class="metric-progress">
+            <div class="progress-bar" style="width: 75%"></div>
+          </div>
+        </div>
+        
+        <div class="metric-card wind">
+          <div class="metric-icon">💨</div>
+          <div class="metric-content">
+            <div class="metric-value">15</div>
+            <div class="metric-label">Wind (km/h)</div>
+          </div>
+          <div class="metric-progress">
+            <div class="progress-bar" style="width: 45%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Info Cards -->
+  <div class="weather-info-grid">
+    <div class="info-card forecast">
+      <div class="info-header">
+        <h3>24h Forecast</h3>
+        <div class="info-icon">📊</div>
+      </div>
+      <div class="forecast-items">
+        <div class="forecast-item">
+          <span class="forecast-time">12:00</span>
+          <span class="forecast-temp">27°</span>
+        </div>
+        <div class="forecast-item">
+          <span class="forecast-time">15:00</span>
+          <span class="forecast-temp">29°</span>
+        </div>
+        <div class="forecast-item">
+          <span class="forecast-time">18:00</span>
+          <span class="forecast-temp">24°</span>
+        </div>
+        <div class="forecast-item">
+          <span class="forecast-time">21:00</span>
+          <span class="forecast-temp">22°</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card uv-index">
+      <div class="info-header">
+        <h3>UV Index</h3>
+        <div class="info-icon">☀️</div>
+      </div>
+      <div class="uv-content">
+        <div class="uv-value">7</div>
+        <div class="uv-level high">High</div>
+        <div class="uv-description">Seek shade during midday hours</div>
+      </div>
+    </div>
+
+    <div class="info-card air-quality">
+      <div class="info-header">
+        <h3>Air Quality</h3>
+        <div class="info-icon">🌬️</div>
+      </div>
+      <div class="air-quality-content">
+        <div class="aqi-value">42</div>
+        <div class="aqi-level good">Good</div>
+        <div class="aqi-description">Air quality is satisfactory</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Refresh Section -->
+  <div class="weather-footer">
+    <div class="last-updated">
+      <span class="update-icon">🔄</span>
+      Last updated: {{ getCurrentTime() }}
+    </div>
+    <button class="refresh-btn" (click)="refreshWeatherData()">
+      <span class="btn-icon">⟳</span>
+      Refresh Data
+    </button>
+  </div>
 </div>

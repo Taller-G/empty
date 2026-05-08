@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-weather',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.css']
 })
@@ -14,5 +17,15 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit(): void {
     // Initialize or fetch data here
+  }
+
+  getCurrentTime(): string {
+    return new Date().toLocaleTimeString();
+  }
+
+  refreshWeatherData(): void {
+    // Simulate data refresh
+    console.log('Refreshing weather data...');
+    // Here you would typically call a weather service
   }
 }

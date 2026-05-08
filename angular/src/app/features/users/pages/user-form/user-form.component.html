@@ -87,7 +87,7 @@
             <app-icon name="loading" [size]="16" className="loading-spinner"></app-icon>
             <span>{{ isEditMode() ? 'Saving…' : 'Creating…' }}</span>
           } @else {
-            <app-icon name="{{ isEditMode() ? 'check' : 'plus' }}" [size]="16"></app-icon>
+            <app-icon [name]="isEditMode() ? 'check' : 'plus'" [size]="16"></app-icon>
             <span>{{ isEditMode() ? 'Save Changes' : 'Create User' }}</span>
           }
         </button>
