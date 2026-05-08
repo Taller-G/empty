@@ -3,8 +3,13 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'users',
+    redirectTo: 'projects',
     pathMatch: 'full',
+  },
+  {
+    path: 'projects',
+    loadChildren: () =>
+      import('./features/projects/projects.routes').then((m) => m.projectRoutes),
   },
   {
     path: 'users',

@@ -153,6 +153,15 @@ a:hover {
   text-decoration: none;
 }
 
+.btn-sm {
+  padding: calc(var(--spacing-xs) * 0.75) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.retry-btn {
+  margin-left: var(--spacing-sm);
+}
+
 /* Form elements */
 .form-group {
   display: flex;
@@ -211,6 +220,16 @@ a:hover {
 .badge-danger {
   background-color: #ffebee;
   color: #c62828;
+}
+
+.badge-info {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.badge-warning {
+  background-color: #fff3e0;
+  color: #f57c00;
 }
 
 /* Alert */

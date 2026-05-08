@@ -1,0 +1,98 @@
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">Explore development projects with detailed descriptions</p>
+  </div>
+  <div class="project-counter">
+    <div class="counter-card">
+      <span class="counter-number">{{ totalProjects() }}</span>
+      <span class="counter-label">Total Projects</span>
+    </div>
+  </div>
+</div>
+
+<!-- Project Statistics -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card active">
+      <div class="stat-number">{{ projectCounts().active }}</div>
+      <div class="stat-label">Active</div>
+    </div>
+    <div class="stat-card completed">
+      <div class="stat-number">{{ projectCounts().completed }}</div>
+      <div class="stat-label">Completed</div>
+    </div>
+    <div class="stat-card paused">
+      <div class="stat-number">{{ projectCounts().paused }}</div>
+      <div class="stat-label">Paused</div>
+    </div>
+  </div>
+</div>
+
+@if (successMessage()) {
+  <div class="alert alert-success" role="alert">
+    {{ successMessage() }}
+  </div>
+}
+
+@if (error()) {
+  <div class="alert alert-danger" role="alert">
+    {{ error() }}
+    <button type="button" class="btn btn-outline retry-btn" (click)="loadProjectsData()">
+      Retry
+    </button>
+  </div>
+}
+
+<div class="card">
+  @if (isLoading()) {
+    <div class="loading-state">
+      <span class="spinner"></span>
+      <span>Loading projects…</span>
+    </div>
+  } @else if (projects().length === 0) {
+    <div class="empty-state">
+      <p class="empty-state-message">No projects found.</p>
+      <p class="empty-state-subtitle">Projects will be displayed here when available.</p>
+    </div>
+  } @else {
+    <div class="projects-grid">
+      @for (project of projects(); track trackById($index, project)) {
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">{{ project.name }}</h3>
+            <span [class]="getStatusBadgeClass(project.status)">
+              {{ getStatusDisplayText(project.status) }}
+            </span>
+          </div>
+          
+          <p class="project-description">{{ project.description }}</p>
+          
+          <div class="project-technologies">
+            <span class="tech-label">Technologies:</span>
+            <div class="tech-tags">
+              @for (tech of project.technologies; track tech) {
+                <span class="tech-tag">{{ tech }}</span>
+              }
+            </div>
+          </div>
+          
+          <div class="project-meta">
+            <div class="project-dates">
+              <div class="date-info">
+                <span class="date-label">Started:</span>
+                <span class="date-value">{{ project.startDate | date: 'mediumDate' }}</span>
+              </div>
+              @if (project.endDate) {
+                <div class="date-info">
+                  <span class="date-label">Completed:</span>
+                  <span class="date-value">{{ project.endDate | date: 'mediumDate' }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
